@@ -1,6 +1,7 @@
 #Import modules
 import cwiid
 from time import sleep
+from subprocess import Popen
 from datetime import datetime
 import picamera
 import os   
@@ -49,11 +50,6 @@ def showpic():
     sleep(5)
     os.system('killall gpicview')
 
-def showvid():
-    #CODE TO SHOW PIC
-    #Use os.system(image viewer + name of file)
-    os.system(str('omxplayer '+(vid)))
-    
 #Main body
 print 'Press 1 + 2 on your Wii Remote now ...'
 sleep(1)
@@ -84,9 +80,6 @@ while True:
   
   elif (buttons & cwiid.BTN_UP):
       showpic()
-    
-  elif (buttons & cwiid.BTN_DOWN):
-    showvid()
 
   elif (buttons & cwiid.BTN_A):
     #print 'Button A pressed'
