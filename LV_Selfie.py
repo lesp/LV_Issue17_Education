@@ -10,11 +10,7 @@ button_delay = 0.1
 
 
 #Define functions
-
 def takepic(pic):
-    #CODE TO TAKE PIC
-    #Buzz wiimote to indicate countdown
-    #Do we need a flash?
     with picamera.PiCamera() as camera:
         camera.start_preview()
         for i in range(5):
@@ -22,7 +18,6 @@ def takepic(pic):
             sleep(1)
             wii.rumble = 0
             sleep(1)
-        #time.sleep(5)
         camera.annotate_text = (pic)
         camera.capture((pic))
         camera.stop_preview()
