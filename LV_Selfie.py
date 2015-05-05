@@ -37,6 +37,7 @@ def takevid(vid):
             wii.rumble = 1
             camera.wait_recording(1)
             wii.rumble = 0
+            sleep(1)
         camera.stop_preview()
         camera.stop_recording()
 
@@ -48,12 +49,20 @@ def showpic():
 #Main body
 print 'Press 1 + 2 on your Wii Remote now ...'
 sleep(1)
-
-try:
-  wii=cwiid.Wiimote()
-except RuntimeError:
-  print "Error opening wiimote connection"
-  quit()
+wii = None
+i = 1
+while not wii:
+    try:
+      wii=cwiid.Wiimote()
+    except RuntimeError:
+        if (i>3):
+            quit()
+            break
+    print "Error opening wiimote connection"
+    print("attempt",str(i))
+    print 'Press 1 + 2 on your Wii Remote now ...'
+    i = i + 1
+    #quit()
 
 print 'Wii Remote connected...\n'
 print 'Press some buttons!\n'
