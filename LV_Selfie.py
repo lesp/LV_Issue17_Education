@@ -1,7 +1,6 @@
 #Import modules
 import cwiid
 from time import sleep
-from subprocess import Popen
 from datetime import datetime
 import picamera
 import os   
@@ -29,12 +28,10 @@ def takepic(pic):
         camera.stop_preview()
 
 def takevid(vid):
-    #CODE TO TAKE VIDEO
     with picamera.PiCamera() as camera:
         camera.resolution = (1280, 720)
         camera.start_recording((vid)+'.h264')
         camera.annotate_text = (vid)
-        #camera.wait_recording
         camera.start_preview()
         for i in range(10):
             wii.rumble = 1
@@ -44,8 +41,6 @@ def takevid(vid):
         camera.stop_recording()
 
 def showpic():
-    #CODE TO SHOW PIC
-    #Use os.system(image viewer + name of file)
     os.system(str('gpicview '+(pic)+(' &')))
     sleep(5)
     os.system('killall gpicview')
