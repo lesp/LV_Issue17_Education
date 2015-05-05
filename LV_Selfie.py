@@ -35,9 +35,9 @@ def takevid(vid):
         camera.start_preview()
         for i in range(10):
             wii.rumble = 1
-            camera.wait_recording(1)
-            wii.rumble = 0
             sleep(1)
+            wii.rumble = 0
+            camera.wait_recording(1)
         camera.stop_preview()
         camera.stop_recording()
 
@@ -64,8 +64,14 @@ while not wii:
     i = i + 1
     #quit()
 
-print 'Wii Remote connected...\n'
-print 'Press some buttons!\n'
+print('Wii Remote connected...\n')
+print('Press\n')
+print('A to take a photo with a 5 second timer\n')
+print('Countdown will be communicated using vibration motor in wiimote\n')
+print('Up to display the last photo taken\n')
+print('B to record 10 seconds of video\n')
+print('Countdown will be communicated using vibration motor in wiimote\n')
+
 print 'Press PLUS and MINUS together to disconnect and quit.\n'
 
 wii.rpt_mode = cwiid.RPT_BTN
