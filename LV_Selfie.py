@@ -50,11 +50,11 @@ while not wii:
     try:
       wii=cwiid.Wiimote()
     except RuntimeError:
-        if (i>3):
+        if (i>2):
             quit()
             break
     print "Error opening wiimote connection"
-    print("attempt",str(i))
+    print("Attempt "+str(i))
     print 'Press 1 + 2 on your Wii Remote now ...'
     i = i + 1
     #quit()
@@ -99,12 +99,3 @@ while True:
     vid = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')+(".h264")
     takevid(vid) 
     sleep(button_delay)
-
-
-#Connect Wiimote and confirm
-#Give instructions on what button to use
-#Countdown from 5
-#Take picture with date time stamp
-#Show picture to user
-#Close viewer
-#Repeat until exit button pressed.
