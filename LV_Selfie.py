@@ -10,7 +10,7 @@ button_delay = 0.1
 
 
 #Define functions
-def takepic(pic):
+def takepic(selfie):
     with picamera.PiCamera() as camera:
         camera.start_preview()
         for i in range(5):
@@ -18,8 +18,8 @@ def takepic(pic):
             sleep(1)
             wii.rumble = 0
             sleep(1)
-        camera.annotate_text = (pic)
-        camera.capture((pic))
+        camera.annotate_text = (selfie)
+        camera.capture((selfie))
         camera.stop_preview()
 
 def takevid(vid):
@@ -37,7 +37,7 @@ def takevid(vid):
         camera.stop_recording()
 
 def showpic():
-    os.system(str('gpicview '+(pic)+(' &')))
+    os.system(str('gpicview '+(selfie)+(' &')))
     sleep(5)
     os.system('killall gpicview')
 
@@ -86,10 +86,10 @@ while True:
       showpic()
 
   elif (buttons & cwiid.BTN_A):
-    pic = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')+(".jpg")
-    print(pic)
+    selfie = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')+(".jpg")
+    print(selfie)
     sleep(3)
-    takepic(pic)
+    takepic(selfie)
     sleep(button_delay)          
 
   elif (buttons & cwiid.BTN_B):
